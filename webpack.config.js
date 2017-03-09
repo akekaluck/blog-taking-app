@@ -1,14 +1,30 @@
 var path = require("path");
 
 module.exports = {
-  entry: './app/js/app.js',
+  entry: './src/js/index.js',
   output: {
     path: path.resolve(__dirname, "build/js"),
     publicPath: '/build',
     filename: 'bundle.js'
   },
+  devServer: {
+    hot: true,
+    contentBase: './',
+    historyApiFallback: true,
+  },
+  devtool: 'source-map',
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            presets: ['es2015','react','stage-2']
+          }
+        }]
+      },
       {
         test: /\.less$/,
         use: [{
@@ -18,14 +34,6 @@ module.exports = {
         }, {
           loader: "less-loader" // compiles Less to CSS
         }]
-      },
-      {
-        test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['es2015','react']
-        }
       }
     ]
   }
