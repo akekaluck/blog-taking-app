@@ -27,11 +27,15 @@ body {
     flex-direction: column;
     // background-color: red !important;
     margin: 10px;
-    padding: 10px;
+    padding: 0px;
     height: 100%;//~'calc( 100% + 90px )';
   }
 }
-
+.add-button {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+}
 .blog-item {
   padding: 5px;
   // background-color: blue;
@@ -39,5 +43,36 @@ body {
     padding: 10px;
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
+    .header {
+      display: flex;
+      justify-content: space-between;
+      .blog-item-title {
+        font-size: 20px;
+      }
+      .blog-item-remove-btn {
+
+      }
+    }
+
+    .blog-item-content {
+      min-height: 50px;
+    }
+
+    .blog-item-footer {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      .blog-item-readmore {
+
+      }
+      .blog-item-date {
+        text-align: right;
+      }
+    }
+
+    &:hover {
+
+    }
   }
 }

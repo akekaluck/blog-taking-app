@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { Router, Route, DefaultRoute, IndexRoute, browserHistory, Redirect} from 'react-router';
-import { routerMiddleware } from 'react-router-redux'
+import { routerMiddleware, syncHistoryWithStore } from 'react-router-redux'
 
 //Middleware
 import logger from 'redux-logger';
@@ -15,18 +15,21 @@ var injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
 
 //Src
-import reducer from './reducers';
+import reducers from './reducers';
 import Layout from './components/layout';
 import BlogList from './components/bloglist';
 import BlogScreen from './components/blogscreen';
 import BlogEdit from './components/blogedit';
 
+//Load initial Actions
+import { init as initBlogList } from './components/bloglist/actions';
+import { init as initBlogScreen } from './components/blogscreen/actions';
+import { init as initBlogEdit } from './components/blogedit/actions';
 
-import { loadBlogs } from './actions';
 //Load style
 require('../less/style.less');
 
-const store = createStore(reducer,
+const store = createStore(reducers,
   applyMiddleware(logger(), routerMiddleware(browserHistory), thunk)
 );
 
@@ -36,15 +39,21 @@ const NotFound = React.createClass({
   }
 })
 
+const history = syncHistoryWithStore(browserHistory, store);
+
 const App = () => (
   <Provider store= { store }>
     <MuiThemeProvider>
-      <Router history={browserHistory}>
+      <Router history={history}>
         <Route path="/" component={Layout} >
           <IndexRoute component={BlogList}
-            onEnter={ store.dispatch(loadBlogs())}/>
-          <Route path="screen" component={BlogScreen} />
-          <Route path="edit" component={BlogEdit} />
+            onEnter={ () => store.dispatch(initBlogList())}/>
+          <Route path="screen/:id" component={BlogScreen}
+            onEnter={ () => store.dispatch(initBlogScreen())}/>
+          <Route path="edit/add" component={BlogEdit}
+            onEnter={ () => store.dispatch(initBlogEdit())}/>
+          <Route path="edit/:id" component={BlogEdit}
+            onEnter={ () => store.dispatch(initBlogEdit())}/>
           <Route path="*" component={NotFound} />
         </Route>
       </Router>
