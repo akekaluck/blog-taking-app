@@ -21,6 +21,8 @@ import BlogList from './components/bloglist';
 import BlogScreen from './components/blogscreen';
 import BlogEdit from './components/blogedit';
 
+
+import { loadBlogs } from './actions';
 //Load style
 require('../less/style.less');
 
@@ -39,7 +41,8 @@ const App = () => (
     <MuiThemeProvider>
       <Router history={browserHistory}>
         <Route path="/" component={Layout} >
-          <IndexRoute component={BlogList} />
+          <IndexRoute component={BlogList}
+            onEnter={ store.dispatch(loadBlogs())}/>
           <Route path="screen" component={BlogScreen} />
           <Route path="edit" component={BlogEdit} />
           <Route path="*" component={NotFound} />

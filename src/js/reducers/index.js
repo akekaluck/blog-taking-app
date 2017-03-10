@@ -2,11 +2,11 @@ import { combineReducers } from 'redux';
 
 const initState = {
   title: 'Blog',
-  blogEntryList: {
-    sortByDate: true,
-    sortByTitle: true, 
-    blogs: []
-  },
+  sortBy: ['Date', 'Title'],
+  blogs: [
+    {title: 'Blog 1', date: new Date(), content: 'Hello world' },
+    {title: 'Blog 2', date: new Date(), content: 'Hello world 2' }
+  ],
   blogDisplayScreen: {
     title: undefined,
     date: new Date(),
