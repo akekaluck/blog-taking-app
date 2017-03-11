@@ -1,7 +1,4 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as Actions from './actions';
 import { IndexLink } from 'react-router';
 
 import Paper from 'material-ui/Paper';
@@ -11,7 +8,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 class BlogEdit extends React.Component {
   render(){
-    const { Blog, ErrorText, params, onAddBlog } = this.props;
+    const { Blog, ErrorText, params, addBlog } = this.props;
     const label = params.id?'Save':'Add';
     return (
       <div className="blog-list-container">
@@ -44,7 +41,7 @@ class BlogEdit extends React.Component {
             fullWidth={true}
           />
           <RaisedButton label={label} primary={true}
-            onClick={ () => onAddBlog(Blog) }
+            onClick={ () => addBlog(Blog) }
           />
         </Paper>
       </div>
@@ -52,16 +49,4 @@ class BlogEdit extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return { ...state.Blog }
-}
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-      ...bindActionCreators({
-        ...Actions
-      }, dispatch)
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(BlogEdit);
+export default BlogEdit;

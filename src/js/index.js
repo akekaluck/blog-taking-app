@@ -15,16 +15,22 @@ var injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
 
 //Src
-import reducers from './reducers';
+import reducers from './pages/reducers';
+
 import Layout from './components/layout';
-import BlogList from './components/bloglist';
-import BlogScreen from './components/blogscreen';
-import BlogEdit from './components/blogedit';
+import Home from './pages/home';
+import DetailPage from './pages/detail';
+import EditPage from './pages/edit';
+
+
+// import BlogList from './components/bloglist';
+// import BlogScreen from './components/blogscreen';
+// import BlogEdit from './components/blogedit';
 
 //Load initial Actions
-import { init as initBlogList } from './components/bloglist/actions';
-import { init as initBlogScreen } from './components/blogscreen/actions';
-import { init as initBlogEdit } from './components/blogedit/actions';
+// import { init as initBlogList } from './components/bloglist/actions';
+// import { init as initBlogScreen } from './components/blogscreen/actions';
+// import { init as initBlogEdit } from './components/blogedit/actions';
 
 //Load style
 require('../less/style.less');
@@ -46,14 +52,12 @@ const App = () => (
     <MuiThemeProvider>
       <Router history={history}>
         <Route path="/" component={Layout} >
-          <IndexRoute component={BlogList}
-            onEnter={ () => store.dispatch(initBlogList())}/>
-          <Route path="screen/:id" component={BlogScreen}
-            onEnter={ () => store.dispatch(initBlogScreen())}/>
-          <Route path="edit/add" component={BlogEdit}
-            onEnter={ () => store.dispatch(initBlogEdit())}/>
-          <Route path="edit/:id" component={BlogEdit}
-            onEnter={ () => store.dispatch(initBlogEdit())}/>
+          <IndexRoute component={Home}
+            />
+          <Route path="screen/:id" component={DetailPage}
+            />
+          <Route path="edit/:id" component={EditPage}
+            />
           <Route path="*" component={NotFound} />
         </Route>
       </Router>

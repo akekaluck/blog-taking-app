@@ -1,7 +1,4 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as Actions from './actions';
 
 import BlogItem from './components/blogItem';
 import RemoveDlg from './components/remove_dlg';
@@ -10,33 +7,33 @@ import Paper from 'material-ui/Paper';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
-export class BlogList extends React.Component {
+class BlogList extends React.Component {
   render(){
-    const { onEdit, onShowRemoveDlg, blogs, onRead, onDetail, onAdd } = this.props;
-    const { remove_dlg_open, onRemoveDlgClose, onRemoveBlog } = this.props;
+    const { showEditBlogPage, showRemoveDlg, blogs, onRead, showBlogDetailPage, showAddBlogPage } = this.props;
+    const { remove_dlg_open, closeRemoveDlg, removeBlog } = this.props;
     return (
       <div className="blog-list-container">
         <Paper className="paper">
           {
             blogs.map((blog, index)=>(
               <BlogItem key={index} { ...blog }
-                onEdit={onEdit}
-                onRemove={onShowRemoveDlg}
-                onDetail={onDetail}
+                showEditBlogPage={showEditBlogPage}
+                onRemove={showRemoveDlg}
+                showBlogDetailPage={showBlogDetailPage}
               />
             ))
           }
         </Paper>
         <FloatingActionButton className="add-button"
-          onClick={onAdd}
+          onClick={showAddBlogPage}
         >
           <ContentAdd />
         </FloatingActionButton>
 
         <RemoveDlg
           open={ remove_dlg_open }
-          handleClose= { onRemoveDlgClose }
-          handleOK= { onRemoveBlog }
+          handleClose= { closeRemoveDlg }
+          handleOK= { removeBlog }
         />
       </div>
     )
@@ -44,30 +41,12 @@ export class BlogList extends React.Component {
 }
 
 BlogList.propTypes = {
-  onEdit: React.PropTypes.func ,
-  onEdit: React.PropTypes.func.isRequired,
-  onShowRemoveDlg: React.PropTypes.func,
-  onShowRemoveDlg: React.PropTypes.func.isRequired,
-  onDetail: React.PropTypes.func,
-  onDetail: React.PropTypes.func.isRequired,
-  onAdd: React.PropTypes.func,
-  onAdd: React.PropTypes.func.isRequired,
-  onRemoveDlgClose: React.PropTypes.func,
-  onRemoveDlgClose: React.PropTypes.func.isRequired,
-  onRemoveBlog: React.PropTypes.func,
-  onRemoveBlog: React.PropTypes.func.isRequired
+  showEditBlogPage: React.PropTypes.func.isRequired,
+  showRemoveDlg: React.PropTypes.func.isRequired,
+  showBlogDetailPage: React.PropTypes.func.isRequired,
+  showAddBlogPage: React.PropTypes.func.isRequired,
+  closeRemoveDlg: React.PropTypes.func.isRequired,
+  removeBlog: React.PropTypes.func.isRequired
 }
 
-const mapStateToProps = (state) => {
-  return {...state.BlogList}
-}
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-      ...bindActionCreators({
-        ...Actions
-      }, dispatch)
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(BlogList);
+export default BlogList;

@@ -1,7 +1,7 @@
 import React from 'react';
 import sinon from 'sinon';
 import { shallow, mount, render } from 'enzyme';
-import { BlogList } from './index';
+import BlogList from './index';
 
 function setup(){
   const onButtonClick = sinon.spy();
@@ -10,14 +10,14 @@ function setup(){
       {title: 'Blog 1', date: new Date(), content: 'Hello world' },
       {title: 'Blog 2', date: new Date(), content: 'Hello world 2' }
     ],
-    onEdit: onButtonClick,
-    onDetail: () => {},
-    onAdd: () => {},
+    showEditBlogPage: onButtonClick,
+    showBlogDetailPage: () => {},
+    showAddBlogPage: () => {},
     handleClose: () => {},
     handleOK: () => {},
-    onRemoveDlgClose: () => {},
-    onRemoveBlog: ()=>{},
-    onShowRemoveDlg: () => {}
+    closeRemoveDlg: () => {},
+    removeBlog: ()=>{},
+    showRemoveDlg: () => {}
   }
 
   const enzymeWrapper = shallow(<BlogList { ...props} />)

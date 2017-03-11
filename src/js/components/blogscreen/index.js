@@ -1,8 +1,5 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as Actions from './actions';
 import { IndexLink } from 'react-router';
 
 class BlogScreen extends React.Component {
@@ -16,23 +13,11 @@ class BlogScreen extends React.Component {
           </div>
           <h1>{ Blog.id }</h1>
           <h1>{ Blog.content }</h1>
-          <h1>{ Blog.date.toString() }</h1>
+          <h1>{ Blog.date?Blog.date.toString():'-' }</h1>
         </Paper>
       </div>
     )
   }
 }
 
-const mapStateToProps = (state) => {
-  return {...state.Blog}
-}
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-      ...bindActionCreators({
-        ...Actions
-      }, dispatch)
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(BlogScreen);
+export default BlogScreen;

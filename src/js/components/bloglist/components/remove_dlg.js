@@ -30,11 +30,4 @@ export const RemoveDlg = (props) => {
 
 }
 
-RemoveDlg.propTypes = {
-  handleClose: React.PropTypes.func ,
-  handleClose: React.PropTypes.func.isRequired,
-  handleOK: React.PropTypes.func ,
-  handleOK: React.PropTypes.func.isRequired
-}
-
 export default RemoveDlg;

@@ -21,9 +21,9 @@ describe('Test logic validate inputs', function(){
         content: '',
         date: moment()
       }
-      store.dispatch(actions.onAddBlog(Blog))
+      store.dispatch(actions.addBlog(Blog))
       expect(store.getActions().length).toBe(1);
-      expect(store.getActions()[0].type).toBe(actions.CONTENT_BLOG_ERROR);
+      expect(store.getActions()[0].type).toBe(actions.VALIDATE_BLOG_ERROR);
     })
     test('Title less than 64 characters, Ok', function(){
       const Blog = {
@@ -31,7 +31,7 @@ describe('Test logic validate inputs', function(){
         content: 'test',
         date: moment()
       }
-      store.dispatch(actions.onAddBlog(Blog))
+      store.dispatch(actions.addBlog(Blog))
       expect(store.getActions()[0].type).toBe(actions.USER_ADD_BLOG);
     })
     test('Title empty, error', function(){
@@ -40,9 +40,9 @@ describe('Test logic validate inputs', function(){
         content: 'test',
         date: moment()
       }
-      store.dispatch(actions.onAddBlog(Blog))
+      store.dispatch(actions.addBlog(Blog))
       expect(store.getActions().length).toBe(1);
-      expect(store.getActions()[0].type).toBe(actions.CONTENT_BLOG_ERROR);
+      expect(store.getActions()[0].type).toBe(actions.VALIDATE_BLOG_ERROR);
     })
     test('Title undefined, error', function(){
       const Blog = {
@@ -50,9 +50,9 @@ describe('Test logic validate inputs', function(){
         content: 'test',
         date: moment()
       }
-      store.dispatch(actions.onAddBlog(Blog))
+      store.dispatch(actions.addBlog(Blog))
       expect(store.getActions().length).toBe(1);
-      expect(store.getActions()[0].type).toBe(actions.CONTENT_BLOG_ERROR);
+      expect(store.getActions()[0].type).toBe(actions.VALIDATE_BLOG_ERROR);
     })
   })
 
@@ -63,7 +63,7 @@ describe('Test logic validate inputs', function(){
         content: 'test',
         date: moment().add(2, 'days')
       }
-      store.dispatch(actions.onAddBlog(Blog))
+      store.dispatch(actions.addBlog(Blog))
       expect(store.getActions()[0].type).toBe(actions.USER_ADD_BLOG);
     })
     test('Date less than today, error', function(){
@@ -72,9 +72,9 @@ describe('Test logic validate inputs', function(){
         content: 'test',
         date: moment().add(-2, 'days')
       }
-      store.dispatch(actions.onAddBlog(Blog))
+      store.dispatch(actions.addBlog(Blog))
       expect(store.getActions().length).toBe(1);
-      expect(store.getActions()[0].type).toBe(actions.CONTENT_BLOG_ERROR);
+      expect(store.getActions()[0].type).toBe(actions.VALIDATE_BLOG_ERROR);
     })
   })
 
@@ -85,9 +85,9 @@ describe('Test logic validate inputs', function(){
         content: '',
         date: moment()
       }
-      store.dispatch(actions.onAddBlog(Blog))
+      store.dispatch(actions.addBlog(Blog))
       expect(store.getActions().length).toBe(1);
-      expect(store.getActions()[0].type).toBe(actions.CONTENT_BLOG_ERROR);
+      expect(store.getActions()[0].type).toBe(actions.VALIDATE_BLOG_ERROR);
     })
     test('Content is undefined, error', function(){
       const Blog = {
@@ -95,9 +95,9 @@ describe('Test logic validate inputs', function(){
         content: undefined,
         date: moment()
       }
-      store.dispatch(actions.onAddBlog(Blog))
+      store.dispatch(actions.addBlog(Blog))
       expect(store.getActions().length).toBe(1);
-      expect(store.getActions()[0].type).toBe(actions.CONTENT_BLOG_ERROR);
+      expect(store.getActions()[0].type).toBe(actions.VALIDATE_BLOG_ERROR);
     })
     test('Content normal, ok', function(){
       const Blog = {
@@ -105,7 +105,7 @@ describe('Test logic validate inputs', function(){
         content: 'content is ok',
         date: moment()
       }
-      store.dispatch(actions.onAddBlog(Blog))
+      store.dispatch(actions.addBlog(Blog))
       expect(store.getActions()[0].type).toBe(actions.USER_ADD_BLOG);
     })
   });
