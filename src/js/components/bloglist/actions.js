@@ -49,9 +49,7 @@ export const onRemoveBlog = () => {
   return (dispatch, getState) => {
     const { blogs } = getState().BlogList;
     const { Blog } = getState().Blog;
-    console.log('Xxxxxxx', Blog);
     const newBlogs = blogs.filter((b) => b.id !== Blog.id );
-
     dispatch({ type: REMOVE_BLOG, payload: newBlogs });
     dispatch(onRemoveDlgClose());
   }

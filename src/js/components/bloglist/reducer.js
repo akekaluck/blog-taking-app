@@ -18,6 +18,10 @@ const BlogList = (state = initState, action) => {
       return {...state,
         blogs: action.payload
       }
+    case 'USER_ADD_BLOG':
+      return {...state,
+        blogs: [...state.blogs, {...action.payload}]
+      }
     default:
       return state;
   }

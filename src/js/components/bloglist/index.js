@@ -47,11 +47,15 @@ BlogList.propTypes = {
   onEdit: React.PropTypes.func ,
   onEdit: React.PropTypes.func.isRequired,
   onShowRemoveDlg: React.PropTypes.func,
-  onShowRemoveDlg: React.PropTypes.any.isRequired,
+  onShowRemoveDlg: React.PropTypes.func.isRequired,
   onDetail: React.PropTypes.func,
-  onDetail: React.PropTypes.any.isRequired,
+  onDetail: React.PropTypes.func.isRequired,
   onAdd: React.PropTypes.func,
-  onAdd: React.PropTypes.any.isRequired
+  onAdd: React.PropTypes.func.isRequired,
+  onRemoveDlgClose: React.PropTypes.func,
+  onRemoveDlgClose: React.PropTypes.func.isRequired,
+  onRemoveBlog: React.PropTypes.func,
+  onRemoveBlog: React.PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => {

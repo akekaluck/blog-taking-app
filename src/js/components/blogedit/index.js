@@ -11,7 +11,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 class BlogEdit extends React.Component {
   render(){
-    const { Blog, ErrorText, params} = this.props;
+    const { Blog, ErrorText, params, onAddBlog } = this.props;
     const label = params.id?'Save':'Add';
     return (
       <div className="blog-list-container">
@@ -23,6 +23,7 @@ class BlogEdit extends React.Component {
             floatingLabelText="Title"
             floatingLabelFixed={true}
             defaultValue={ Blog.title }
+            onChange={ (e) => Blog.title = e.target.value }
             errorText={ ErrorText.title }
             fullWidth={true}
           />
@@ -30,16 +31,21 @@ class BlogEdit extends React.Component {
             floatingLabelText="Post date"
             floatingLabelFixed={true}
             defaultDate={ Blog.date }
+            onChange={ (e, date) => Blog.date = date }
+            errorText={ ErrorText.date }
             fullWidth={true}
           />
           <TextField
             floatingLabelText="Content"
             floatingLabelFixed={true}
             defaultValue={ Blog.content }
+            onChange={ (e) => Blog.content = e.target.value }
             errorText={ ErrorText.content }
             fullWidth={true}
           />
-          <RaisedButton label={label} primary={true} />
+          <RaisedButton label={label} primary={true}
+            onClick={ () => onAddBlog(Blog) }
+          />
         </Paper>
       </div>
     )
@@ -58,4 +64,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
 }
 
-export default connect(mapStateToProps)(BlogEdit);
+export default connect(mapStateToProps, mapDispatchToProps)(BlogEdit);

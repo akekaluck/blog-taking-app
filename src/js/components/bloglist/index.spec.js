@@ -11,9 +11,13 @@ function setup(){
       {title: 'Blog 2', date: new Date(), content: 'Hello world 2' }
     ],
     onEdit: onButtonClick,
-    onRemove: () => {
-
-    }
+    onDetail: () => {},
+    onAdd: () => {},
+    handleClose: () => {},
+    handleOK: () => {},
+    onRemoveDlgClose: () => {},
+    onRemoveBlog: ()=>{},
+    onShowRemoveDlg: () => {}
   }
 
   const enzymeWrapper = shallow(<BlogList { ...props} />)
