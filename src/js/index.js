@@ -28,7 +28,7 @@ import EditPage from './pages/edit';
 const storageReducer = storage.reducer(reducers);
 
 import createEngine from 'redux-storage-engine-localstorage';
-const engine = createEngine('my-save-key');
+const engine = createEngine('ABlog_post');
 const storagemiddleware = storage.createMiddleware(engine);
 
 //Load style

@@ -35,7 +35,9 @@ const SubHeader = (props) => (
           :''
       }
     </Toolbar>
-    { props.children }
+    <div className="blog-screen-container">
+      { props.children }
+    </div>
     </Paper>
   </div>
 )

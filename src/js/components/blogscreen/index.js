@@ -9,13 +9,11 @@ class BlogScreen extends React.Component {
         showRightButtons = { true }
         onRemove={ () => showRemoveDlg(Blog) }
       >
-        <div className="blog-screen-container">
-          <div className="blog-screen-top">
-            <div className="blog-screen-title">{ Blog.title }</div>
-            <div className="blog-screen-date">{ Blog.date?Blog.date.toString():'-' }</div>
-          </div>
-          <div className="blog-screen-content">{ Blog.content }</div>
+        <div className="blog-screen-top">
+          <div className="blog-screen-title">{ Blog.title }</div>
+          <div className="blog-screen-date">{ Blog.date?Blog.date.toString():'-' }</div>
         </div>
+        <div className="blog-screen-content">{ Blog.content }</div>
       </SubHeader>
     )
   }
