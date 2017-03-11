@@ -72,6 +72,9 @@ export const removeBlog = () => {
     const newBlogs = blogs.filter((b) => b.id !== Blog.id );
     dispatch({ type: USER_REMOVE_BLOG, payload: newBlogs });
     dispatch(closeRemoveDlg());
+    dispatch(push({
+      pathname: '/'
+    }))
   }
 }
 

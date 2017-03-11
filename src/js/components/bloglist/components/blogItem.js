@@ -32,4 +32,13 @@ const BlogItem = (props) => (
   </div>
 )
 
+BlogItem.propTypes = {
+  title: React.PropTypes.string.isRequired,
+  content: React.PropTypes.string.isRequired,
+  date: React.PropTypes.object.isRequired,
+  showEditBlogPage: React.PropTypes.func.isRequired,
+  onRemove: React.PropTypes.func.isRequired,
+  showBlogDetailPage: React.PropTypes.func.isRequired
+}
+
 export default BlogItem;

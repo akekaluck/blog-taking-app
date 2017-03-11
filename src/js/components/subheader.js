@@ -1,7 +1,7 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
 import IconButton from 'material-ui/IconButton';
-import BackHome from 'material-ui/svg-icons/navigation/chevron-left';
+import BackHome from 'material-ui/svg-icons/image/navigate-before';
 import EditMode from 'material-ui/svg-icons/editor/mode-edit';
 import Delete from 'material-ui/svg-icons/action/delete';
 import { IndexLink } from 'react-router';
@@ -26,10 +26,10 @@ const SubHeader = (props) => (
                   <EditMode />
                 </IndexLink>
               </IconButton>
-              <IconButton>
-                <IndexLink to={'/'}>
-                  <Delete />
-                </IndexLink>
+              <IconButton
+                onClick={ props.onRemove }
+              >
+                <Delete />
               </IconButton>
             </ToolbarGroup>
           :''
@@ -39,5 +39,11 @@ const SubHeader = (props) => (
     </Paper>
   </div>
 )
+
+SubHeader.propTypes = {
+  showRightButtons: React.PropTypes.bool,
+  Blog: React.PropTypes.object.isRequired,
+  onRemove: React.PropTypes.func.isRequired
+}
 
 export default SubHeader;

@@ -12,7 +12,7 @@ class BlogEdit extends React.Component {
     const { Blog, ErrorText, params, addBlog } = this.props;
     const label = params.id?'Save':'Add';
     return (
-      <SubHeader Blog={ Blog } showRightButtons = { false }>
+      <SubHeader Blog={ Blog } showRightButtons={ false } >
           <TextField
             floatingLabelText="Title"
             floatingLabelFixed={true}
@@ -43,6 +43,13 @@ class BlogEdit extends React.Component {
       </SubHeader>
     )
   }
+}
+
+BlogEdit.propTypes = {
+  Blog: React.PropTypes.object.isRequired,
+  ErrorText: React.PropTypes.object.isRequired,
+  params: React.PropTypes.object,
+  addBlog: React.PropTypes.func.isRequired,
 }
 
 export default BlogEdit;

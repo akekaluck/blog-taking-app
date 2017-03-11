@@ -17,6 +17,11 @@ body {
   background-color: rgba(128,128,128,0.7);
 }
 
+#app {
+  width: 100%;
+  height: 100%;
+}
+
 .blog-list-container {
   // padding: 10px;
   width: 100%;
@@ -74,5 +79,27 @@ body {
     &:hover {
       cursor: pointer;
     }
+  }
+}
+
+.blog-screen-container {
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  .blog-screen-top {
+    display: flex;
+    justify-content: space-between;
+  }
+  .blog-screen-title {
+    font-size: 24px;
+  }
+  .blog-screen-date {
+
+  }
+  .blog-screen-content {
+    margin-top: 20px;
+    background-color: red;
+    height: 100%;
   }
 }

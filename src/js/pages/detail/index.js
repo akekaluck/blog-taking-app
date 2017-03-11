@@ -3,14 +3,23 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as Actions from '../actions';
 
+import RemoveDlg from '../../components/removedlg';
 import BlogScreen from '../../components/blogscreen';
 
 const DetailPage = (props) => (
-  <BlogScreen {...props} {...props.Actions} />
+  <div>
+    <BlogScreen {...props.Blog} {...props.Actions} />
+    <RemoveDlg
+      blog={ props.Blog.Blog }
+      open={ props.App.remove_dlg_open }
+      handleClose= { props.Actions.closeRemoveDlg }
+      handleOK= { props.Actions.removeBlog }
+    />
+  </div>
 )
 
 const mapStateToProps = (state) => {
-  return {...state.Blog}
+  return {...state}
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

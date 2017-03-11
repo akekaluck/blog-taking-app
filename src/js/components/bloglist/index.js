@@ -1,22 +1,11 @@
 import React from 'react';
 
 import BlogItem from './components/blogItem';
-import RemoveDlg from './components/remove_dlg';
+import FilterMenu from './components/filtermenu';
 
 import Paper from 'material-ui/Paper';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
-
-import DropDownMenu from 'material-ui/DropDownMenu';
-import MenuItem from 'material-ui/MenuItem';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-
-const FilterMenu = (props) => (
-  <DropDownMenu value={ props.sortBy } onChange={ props.onChange } >
-    <MenuItem primaryText='Sort by date' value= {'Date'} />
-    <MenuItem primaryText='Sort by title' value= {'Title'} />
-  </DropDownMenu>
-)
 
 class BlogList extends React.Component {
   render(){
@@ -41,12 +30,6 @@ class BlogList extends React.Component {
         >
           <ContentAdd />
         </FloatingActionButton>
-
-        <RemoveDlg
-          open={ remove_dlg_open }
-          handleClose= { closeRemoveDlg }
-          handleOK= { removeBlog }
-        />
       </div>
     )
   }
