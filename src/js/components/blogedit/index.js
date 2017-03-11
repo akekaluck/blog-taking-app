@@ -1,7 +1,8 @@
 import React from 'react';
 import { IndexLink } from 'react-router';
 
-import Paper from 'material-ui/Paper';
+import SubHeader from '../subheader';
+
 import TextField from 'material-ui/TextField';
 import DatePicker from 'material-ui/DatePicker';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -11,11 +12,7 @@ class BlogEdit extends React.Component {
     const { Blog, ErrorText, params, addBlog } = this.props;
     const label = params.id?'Save':'Add';
     return (
-      <div className="blog-list-container">
-        <Paper className="paper">
-          <div>
-            <IndexLink to={'/'}>Back</IndexLink>
-          </div>
+      <SubHeader Blog={ Blog } showRightButtons = { false }>
           <TextField
             floatingLabelText="Title"
             floatingLabelFixed={true}
@@ -43,8 +40,7 @@ class BlogEdit extends React.Component {
           <RaisedButton label={label} primary={true}
             onClick={ () => addBlog(Blog) }
           />
-        </Paper>
-      </div>
+      </SubHeader>
     )
   }
 }

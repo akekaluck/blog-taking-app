@@ -7,9 +7,7 @@ import * as Actions from '../actions';
 
 
 const Home = (props) => (
-  <div>
-    <BlogList {...props} {...props.Actions}/>
-  </div>
+  <BlogList {...props} {...props.Actions}/>
 )
 
 const mapStateToProps = (state) => {

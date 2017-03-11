@@ -52,12 +52,10 @@ const App = () => (
     <MuiThemeProvider>
       <Router history={history}>
         <Route path="/" component={Layout} >
-          <IndexRoute component={Home}
-            />
-          <Route path="screen/:id" component={DetailPage}
-            />
-          <Route path="edit/:id" component={EditPage}
-            />
+          <IndexRoute component={Home} />
+          <Route path="screen/:id" component={DetailPage} />
+          <Route path="add" component={EditPage} />
+          <Route path="edit/:id" component={EditPage}/>
           <Route path="*" component={NotFound} />
         </Route>
       </Router>

@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { push } from 'react-router-redux';
+import { push, goBack } from 'react-router-redux';
 
 export const BLOGLIST_INIT = 'BLOGLIST_INIT';
 
@@ -12,6 +12,9 @@ export const USER_SELECT_BLOG = 'USER_SELECT_BLOG';
 export const USER_REMOVE_BLOG = 'USER_REMOVE_BLOG';
 export const USER_ADD_BLOG = 'USER_ADD_BLOG';
 export const VALIDATE_BLOG_ERROR = 'VALIDATE_BLOG_ERROR';
+
+export const SORT_BY_TITLE = 'SORT_BY_TITLE';
+export const SORT_BY_DATE = 'SORT_BY_DATE';
 
 export const init = () => {
   return (dispatch, getState) => {
@@ -28,7 +31,7 @@ export const showAddBlogPage = (blog) => {
       content: undefined
     }})
     dispatch(push({
-      pathname: '/edit/add'
+      pathname: '/add'
     }))
   }
 }
@@ -100,9 +103,17 @@ export const addBlog = (blog) => {
       dispatch({ type: USER_ADD_BLOG, payload: {
         blog, errorText: {}
       }});
-      dispatch(push({
-        pathname: '/'
-      }))
+      dispatch(goBack());
+    }
+  }
+}
+
+export const changefilter = (event, index, value) => {
+  return (dispatch) => {
+    if(value === 'Date'){
+      dispatch({ type: SORT_BY_DATE });
+    } else {
+      dispatch({ type: SORT_BY_TITLE });
     }
   }
 }
