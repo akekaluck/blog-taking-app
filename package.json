@@ -40,7 +40,9 @@
     "sinon": "^1.17.7",
     "style-loader": "^0.13.2",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.4.1"
+    "webpack-dev-server": "^2.4.1",
+    "redux-storage": "^4.1.2",
+    "redux-storage-engine-localstorage": "^1.1.4"
   },
   "dependencies": {}
 }

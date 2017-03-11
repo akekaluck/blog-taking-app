@@ -1,5 +1,6 @@
 import moment from 'moment';
 import * as Actions from '../actions';
+import { LOAD } from 'redux-storage';
 
 const initStateBlogList = {
   sortBy: 'Date',
@@ -62,6 +63,14 @@ const sortByTitle = (state, action) => {
   }
 }
 
+const convertDateStringToDate = (state, action) => {
+  return {...state,
+    blogs: state.blogs.map((blog) => {
+      return {...blog, date: new Date(blog.date)}
+    })
+  }
+}
+
 const BlogList = (state = initStateBlogList, action) => {
   switch (action.type) {
     case Actions.USER_REMOVE_BLOG:
@@ -74,6 +83,8 @@ const BlogList = (state = initStateBlogList, action) => {
       return sortByDate(state, action)
     case Actions.SORT_BY_TITLE:
       return sortByTitle(state, action)
+    case LOAD:
+      return convertDateStringToDate(state, action);
     default:
       return state;
   }

@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import { Router, Route, DefaultRoute, IndexRoute, browserHistory, Redirect} from 'react-router';
-import { routerMiddleware, syncHistoryWithStore } from 'react-router-redux'
+import { routerMiddleware, syncHistoryWithStore } from 'react-router-redux';
+
+import * as storage from 'redux-storage';
 
 //Middleware
 import logger from 'redux-logger';
@@ -22,22 +24,23 @@ import Home from './pages/home';
 import DetailPage from './pages/detail';
 import EditPage from './pages/edit';
 
+// Local storage setup
+const storageReducer = storage.reducer(reducers);
 
-// import BlogList from './components/bloglist';
-// import BlogScreen from './components/blogscreen';
-// import BlogEdit from './components/blogedit';
-
-//Load initial Actions
-// import { init as initBlogList } from './components/bloglist/actions';
-// import { init as initBlogScreen } from './components/blogscreen/actions';
-// import { init as initBlogEdit } from './components/blogedit/actions';
+import createEngine from 'redux-storage-engine-localstorage';
+const engine = createEngine('my-save-key');
+const storagemiddleware = storage.createMiddleware(engine);
 
 //Load style
 require('../less/style.less');
 
-const store = createStore(reducers,
-  applyMiddleware(logger(), routerMiddleware(browserHistory), thunk)
+const store = createStore(storageReducer,
+  applyMiddleware(logger(), routerMiddleware(browserHistory),
+    thunk, storagemiddleware)
 );
+
+const load = storage.createLoader(engine);
+load(store);
 
 const NotFound = React.createClass({
   render() {

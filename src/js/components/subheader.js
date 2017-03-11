@@ -43,7 +43,7 @@ const SubHeader = (props) => (
 SubHeader.propTypes = {
   showRightButtons: React.PropTypes.bool,
   Blog: React.PropTypes.object.isRequired,
-  onRemove: React.PropTypes.func.isRequired
+  onRemove: React.PropTypes.func
 }
 
 export default SubHeader;
