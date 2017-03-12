@@ -16,10 +16,10 @@ class CKEditorWrapper extends React.Component {
       height: '50vh',
       toolbar: [
         {name: 'basicstyles', items: ['Bold','Italic','Strike','-','RemoveFormat']},
-        {name: 'paragraph', items: ['NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote']},
-        {name: 'styles', items: ['Styles','Format']},
-        {name: 'insert', items: ['Image','Table']},
-        {name: 'document', items: ['Source']}
+        {name: 'paragraph', items: ['NumberedList','BulletedList','-','Outdent','Indent']},
+        {name: 'styles', items: ['Format']},
+        {name: 'insert', items: ['Image']},
+        // {name: 'document', items: ['Source']}
       ],
       removePlugins: 'maigcline'
     };

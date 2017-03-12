@@ -85,10 +85,10 @@ export const addBlog = (blog) => {
     const errorText = {};
     //Title max 64 and required
     if(!blog.title ){
-      errorText.title = 'Is Required';
+      errorText.title = 'Title is Required field.';
     }
     else if( !blog.title.length  || blog.title.length > 64){
-      errorText.title = 'Max 64 characters long';
+      errorText.title = 'Title has maximum 64 characters long';
     }
 
     //Date cannot be a past date, required
@@ -100,7 +100,7 @@ export const addBlog = (blog) => {
     if( !blog.content
       || blog.content.length === 0
       || striptags(blog.content).replace('&nbsp;','').lenght === 0){
-      errorText.content = 'Is Required';
+      errorText.content = 'Conent cannot be empty. It is Required field.';
     }
 
     if(Object.keys(errorText).length > 0){

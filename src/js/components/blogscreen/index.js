@@ -28,12 +28,14 @@ class BlogScreen extends React.Component {
         showBackButton = { true }
         onRemove={ () => showRemoveDlg(Blog) }
       >
-        <div className="blog-screen-top">
-          <div className="blog-screen-title">{ Blog.title }</div>
-          <div className="blog-screen-date">{ Blog.date?Blog.date.toString():'-' }</div>
-        </div>
         <div className="blog-screen-content">
-          <div dangerouslySetInnerHTML={{ __html: Blog.content }} />
+          <div className="body">
+            <div className="blog-screen-top">
+              <div className="blog-screen-title">{ Blog.title }</div>
+              <div className="blog-screen-date">{ Blog.date?Blog.date.toString():'-' }</div>
+            </div>
+            <div dangerouslySetInnerHTML={{ __html: Blog.content }} />
+          </div>
         </div>
       </SubHeader>
     )

@@ -12,11 +12,11 @@ const BlogItem = (props) => (
       <div className="header">
         <div className="blog-item-title" >{ props.title }</div>
         <div className="blog-item-remove-btn">
-          <RaisedButton label="E" primary={true} onClick={ (e) => {
+          <RaisedButton label="Edit" primary={true} onClick={ (e) => {
             e.stopPropagation();
             props.showEditBlogPage(props);
           }} />
-          <RaisedButton label="X" secondary={true} onClick={ (e) => {
+          <RaisedButton label="Remove" secondary={true} onClick={ (e) => {
             e.stopPropagation();
             props.onRemove(props);
           }} />
