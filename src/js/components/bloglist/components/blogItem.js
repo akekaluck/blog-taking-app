@@ -22,7 +22,7 @@ const BlogItem = (props) => (
           }} />
         </div>
       </div>
-      <div className="blog-item-content">{ striptags(props.content) }</div>
+      <div className="blog-item-content">{ striptags(props.content).replace('&nbsp;','') }</div>
       <div className="blog-item-footer">
         <div className="blog-item-readmore">
           <a onClick={() => props.showBlogDetailPage(props)} >Read more</a>

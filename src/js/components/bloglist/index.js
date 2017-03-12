@@ -13,8 +13,15 @@ class BlogList extends React.Component {
     const { remove_dlg_open, closeRemoveDlg, removeBlog, sortBy, changefilter } = this.props;
     return (
       <div className="blog-list-container">
-        <FilterMenu sortBy={ sortBy } onChange={ changefilter }/>
         <Paper className="paper">
+          <div>
+            <FilterMenu sortBy={ sortBy } onChange={ changefilter }/>
+            <FloatingActionButton className="add-button"
+              onClick={showAddBlogPage}
+            >
+              <ContentAdd />
+            </FloatingActionButton>
+          </div>
           {
             blogs.map((blog, index)=>(
               <BlogItem key={index} { ...blog }
@@ -25,11 +32,6 @@ class BlogList extends React.Component {
             ))
           }
         </Paper>
-        <FloatingActionButton className="add-button"
-          onClick={showAddBlogPage}
-        >
-          <ContentAdd />
-        </FloatingActionButton>
       </div>
     )
   }

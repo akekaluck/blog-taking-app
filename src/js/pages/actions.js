@@ -99,7 +99,7 @@ export const addBlog = (blog) => {
     //Content is required
     if( !blog.content
       || blog.content.length === 0
-      || striptags(blog.content).lenght === 0){
+      || striptags(blog.content).replace('&nbsp;','').lenght === 0){
       errorText.content = 'Is Required';
     }
 

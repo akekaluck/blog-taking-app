@@ -33,17 +33,7 @@ class BlogEdit extends React.Component {
             errorText={ ErrorText.date }
             fullWidth={true}
           />
-          {/*<TextField
-            floatingLabelText="Content"
-            floatingLabelFixed={true}
-            defaultValue={ Blog.content }
-            onChange={ (e) => Blog.content = e.target.value }
-            errorText={ ErrorText.content }
-            fullWidth={true}
-          />
-          <Editor
-            onChange={ (richTextState) => Blog.richText = richTextState }
-          />*/}
+          <div className="content-error"> { ErrorText.content }</div>
           <CKEditorWrapper
             loadValue = { Blog.content }
             onChange = { (html) => Blog.content = html }
