@@ -11,6 +11,16 @@ import CKEditorWrapper from '../ckeditorwrapper';
 
 require('./style.less');
 
+const ContentErrorMsg = (props) => {
+  let className = 'content-msg';
+  if (props.content) {
+    className += ' error';
+  }
+  return (
+    <div className={className}> { props.content }</div>
+  )
+}
+
 class BlogEdit extends React.Component {
   render(){
     const { Blog, ErrorText, params, addBlog } = this.props;
@@ -33,7 +43,8 @@ class BlogEdit extends React.Component {
             errorText={ ErrorText.date }
             fullWidth={true}
           />
-          <div className="content-error"> { ErrorText.content }</div>
+          <br />
+          <ContentErrorMsg content={ ErrorText.content } />
           <CKEditorWrapper
             loadValue = { Blog.content }
             onChange = { (html) => Blog.content = html }

@@ -5,7 +5,10 @@ import { LOAD } from 'redux-storage';
 const initStateBlogList = {
   sortBy: 'Date',
   blogs: [
-    {id: 1, title: 'Blog 1', date: new Date(), content: 'Hello world' },
+    {id: 1, title: 'Hello World', date: new Date(),
+    content: '<p>Hello world</p>'
+    + '<p><img alt="" src="http://writm.com/wp-content/uploads/2016/08/Cat-hd-wallpapers.jpg" style="height:150px; width:200px" />'
+    + '</p><p>Hello&nbsp;</p>' },
     {id: 2, title: 'Blog 2', date: new Date(), content: 'Hello world 2' }
   ]
 }

@@ -23,7 +23,7 @@ class CKEditorWrapper extends React.Component {
       ],
       removePlugins: 'maigcline'
     };
-    
+
     CKEDITOR.replace('ckeditor-react', config);
     this.state.ckmainlistener = CKEDITOR.on("instanceReady", (event) => {
       //CKeditor ready
@@ -41,7 +41,7 @@ class CKEditorWrapper extends React.Component {
     if(this.state.ckmainlistener){
       this.state.ckmainlistener.removeListener('instanceReady');
     }
-    if(this.state.ckeditor.changeListener){
+    if(this.state.ckeditor && this.state.ckeditor.changeListener){
       this.state.ckeditor.changeListener.removeListener('change');
     }
     CKEDITOR.instances['ckeditor-react'].destroy(true);
