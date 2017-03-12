@@ -9,7 +9,7 @@ import Delete from 'material-ui/svg-icons/action/delete';
 
 class BlogScreen extends React.Component {
   render(){
-    const { Blog, showRemoveDlg } = this.props;
+    const { Blog, showRemoveDlg, historyGoBack } = this.props;
     const toolbarGroups = [
       <ToolbarGroup key={1}>
         <IconButton>
@@ -27,6 +27,7 @@ class BlogScreen extends React.Component {
         toolbarGroups={toolbarGroups}
         showBackButton = { true }
         onRemove={ () => showRemoveDlg(Blog) }
+        historyGoBack={historyGoBack}
       >
         <div className="blog-screen-content">
           <div className="body">

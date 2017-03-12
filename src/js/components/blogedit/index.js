@@ -19,13 +19,14 @@ const ContentErrorMsg = (props) => {
 
 class BlogEdit extends React.Component {
   render(){
-    const { Blog, ErrorText, params, addBlog } = this.props;
+    const { Blog, ErrorText, params, addBlog, historyGoBack } = this.props;
     const label = params.id?'Save':'Add';
     const toolbarGroups = [];
     return (
       <SubHeader
         toolbarGroups={toolbarGroups}
         showBackButton={ true }
+        historyGoBack={historyGoBack}
       >
           <TextField
             floatingLabelText="Title"

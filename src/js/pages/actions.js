@@ -123,3 +123,7 @@ export const changefilter = (event, index, value) => {
     }
   }
 }
+
+export const historyGoBack = () =>{
+  return (dispatch) => dispatch(goBack());
+}

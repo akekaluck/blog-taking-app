@@ -2,7 +2,6 @@ import React from 'react';
 import Paper from 'material-ui/Paper';
 import IconButton from 'material-ui/IconButton';
 import BackHome from 'material-ui/svg-icons/image/navigate-before';
-import { IndexLink } from 'react-router';
 import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
 
 const SubHeader = (props) => (
@@ -12,10 +11,8 @@ const SubHeader = (props) => (
       {
         props.showBackButton?
         <ToolbarGroup>
-          <IconButton>
-            <IndexLink to={'/'}>
-              <BackHome />
-            </IndexLink>
+          <IconButton onClick={props.historyGoBack}>
+            <BackHome />
           </IconButton>
         </ToolbarGroup>
         :''
@@ -35,7 +32,8 @@ const SubHeader = (props) => (
 
 SubHeader.propTypes = {
   toolbarGroups: React.PropTypes.array.isRequired,
-  showBackButton: React.PropTypes.bool
+  showBackButton: React.PropTypes.bool,
+  historyGoBack: React.PropTypes.func.isRequired
 }
 
 export default SubHeader;
