@@ -65,9 +65,9 @@ const sortByTitle = (state, action) => {
   }
 }
 
-const convertDateStringToDate = (state, action) => {
-  return {...state,
-    blogs: state.blogs.map((blog) => {
+const loadStateFromStorage = (state, action) => {
+  return {...action.payload.BlogList,
+    blogs: action.payload.BlogList.blogs.map((blog) => {
       return {...blog, date: new Date(blog.date)}
     })
   }
@@ -86,7 +86,7 @@ const BlogList = (state = initStateBlogList, action) => {
     case Actions.SORT_BY_TITLE:
       return sortByTitle(state, action)
     case LOAD:
-      return convertDateStringToDate(state, action);
+      return loadStateFromStorage(state, action);
     default:
       return state;
   }

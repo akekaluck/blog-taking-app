@@ -29,7 +29,7 @@ const storageReducer = storage.reducer(reducers);
 
 import createEngine from 'redux-storage-engine-localstorage';
 const engine = createEngine('ABlog_post');
-const storagemiddleware = storage.createMiddleware(engine);
+const storagemiddleware = storage.createMiddleware(engine,['@@router/LOCATION_CHANGE','@@router/CALL_HISTORY_METHOD']);
 
 //Load style
 require('../less/style.less');
