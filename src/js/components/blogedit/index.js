@@ -6,6 +6,9 @@ import SubHeader from '../subheader';
 import TextField from 'material-ui/TextField';
 import DatePicker from 'material-ui/DatePicker';
 import RaisedButton from 'material-ui/RaisedButton';
+import Editor from '../editor';
+
+require('./style.less');
 
 class BlogEdit extends React.Component {
   render(){
@@ -37,9 +40,14 @@ class BlogEdit extends React.Component {
             errorText={ ErrorText.content }
             fullWidth={true}
           />
-          <RaisedButton label={label} primary={true}
-            onClick={ () => addBlog(Blog) }
+          <Editor
+            onChange={ (richTextState) => Blog.richText = richTextState }
           />
+          <div className="blog-edit-button-container">
+            <RaisedButton label={label} primary={true}
+              onClick={ () => addBlog(Blog) }
+            />
+          </div>
       </SubHeader>
     )
   }
