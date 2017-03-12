@@ -29,7 +29,7 @@ const storageReducer = storage.reducer(reducers);
 
 import createEngine from 'redux-storage-engine-localstorage';
 const engine = createEngine('ABlog_post');
-const storagemiddleware = storage.createMiddleware(engine,['@@router/LOCATION_CHANGE','@@router/CALL_HISTORY_METHOD']);
+const storagemiddleware = storage.createMiddleware(engine);
 
 //Load style
 require('../less/style.less');
@@ -39,8 +39,6 @@ const store = createStore(storageReducer,
     thunk, storagemiddleware)
 );
 
-const load = storage.createLoader(engine);
-load(store);
 
 const NotFound = React.createClass({
   render() {
@@ -48,25 +46,29 @@ const NotFound = React.createClass({
   }
 })
 
-const history = syncHistoryWithStore(browserHistory, store);
+const load = storage.createLoader(engine);
+load(store)
+.then(()=>{
+  const history = syncHistoryWithStore(browserHistory, store);
 
-const App = () => (
-  <Provider store= { store }>
-    <MuiThemeProvider>
-      <Router history={history}>
-        <Route path="/" component={Layout} >
-          <IndexRoute component={Home} />
-          <Route path="screen/:id" component={DetailPage} />
-          <Route path="add" component={EditPage} />
-          <Route path="edit/:id" component={EditPage}/>
-          <Route path="*" component={NotFound} />
-        </Route>
-      </Router>
-    </MuiThemeProvider>
-  </Provider>
-)
+  const App = () => (
+    <Provider store= { store }>
+      <MuiThemeProvider>
+        <Router history={history}>
+          <Route path="/" component={Layout} >
+            <IndexRoute component={Home} />
+            <Route path="screen/:id" component={DetailPage} />
+            <Route path="add" component={EditPage} />
+            <Route path="edit/:id" component={EditPage}/>
+            <Route path="*" component={NotFound} />
+          </Route>
+        </Router>
+      </MuiThemeProvider>
+    </Provider>
+  )
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('app')
-);
+  ReactDOM.render(
+    <App />,
+    document.getElementById('app')
+  );
+})

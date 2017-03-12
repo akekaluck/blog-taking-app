@@ -25,3 +25,6 @@ npm run test:watch
 # Build package
 1. Build package `npm run build`
 2. Copy `index.html` to `build` folder.
+
+# DEMO
+http://128.199.84.28:9000/
