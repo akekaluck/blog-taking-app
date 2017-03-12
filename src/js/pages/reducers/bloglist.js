@@ -9,7 +9,7 @@ const initStateBlogList = {
     content: '<p>Hello world</p>'
     + '<p><img alt="" src="http://writm.com/wp-content/uploads/2016/08/Cat-hd-wallpapers.jpg" style="height:150px; width:200px" />'
     + '</p><p>Hello&nbsp;</p>' },
-    {id: 2, title: 'Blog 2', date: new Date(), content: 'Hello world 2' }
+    {id: 2, title: 'Blog 2', date: new Date(), content: 'Google ประกาศหยุดพัฒนาปลั๊กอิน Adsense บน WordPress ของตัวเองในเดือนพฤษภาคมหลังพัฒนามากว่า 3 \n ปีสำหรับผู้ใช้ที่ติดตั้งและใช้งานปลั๊กอิน AdSense for WordPress ในช่วงนี้ ยังสามารถใช้งานตามปกติ แต่ผู้ใช้รายใหม่ลงทะเบียนผ่านปลั๊กอินไม่ได้แล้ว ส่วนเดือนเมษายน ผู้ใช้ทุกคนจะไม่สามารถตั้งค่าการแสดงหน่วยโฆษณาบนเว็บผ่านปลั๊กอินได้ สุดท้ายปลั๊กอินจะหยุดพัฒนาและไม่สนับสนุนการทำงานในเดือนพฤษภาคม แต่ทั้งนี้ยังคงแสดงผลโฆษณาที่เคยตั้งค่าไว้ให้เหมือนเดิม' }
   ]
 }
 
