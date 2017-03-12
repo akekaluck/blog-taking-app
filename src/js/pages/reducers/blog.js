@@ -15,7 +15,7 @@ const Blog = (state = initStateBlog, action, stateb) => {
     case Actions.USER_SELECT_BLOG:
       return { ...action.payload }
     case LOAD:
-      return { ...action.payload.Blog, date: new Date(action.payload.Blog.date)  }
+      return { ...action.payload.Blog, date: new Date(moment(action.payload.Blog.date).format())  }
     default:
       return state;
   }

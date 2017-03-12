@@ -68,7 +68,7 @@ const sortByTitle = (state, action) => {
 const loadStateFromStorage = (state, action) => {
   return {...action.payload.BlogList,
     blogs: action.payload.BlogList.blogs.map((blog) => {
-      return {...blog, date: new Date(blog.date)}
+      return {...blog, date: new Date(moment(blog.date).format())}
     })
   }
 }
