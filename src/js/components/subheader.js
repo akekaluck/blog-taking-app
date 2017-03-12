@@ -5,7 +5,7 @@ import BackHome from 'material-ui/svg-icons/image/navigate-before';
 import EditMode from 'material-ui/svg-icons/editor/mode-edit';
 import Delete from 'material-ui/svg-icons/action/delete';
 import { IndexLink } from 'react-router';
-import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
 
 const SubHeader = (props) => (
   <div className="blog-list-container">
