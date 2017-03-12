@@ -1,73 +1,57 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as Actions from './actions';
 
 import BlogItem from './components/blogItem';
-import RemoveDlg from './components/remove_dlg';
+import FilterMenu from './components/filtermenu';
 
 import Paper from 'material-ui/Paper';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
-export class BlogList extends React.Component {
-  render(){
-    const { onEdit, onShowRemoveDlg, blogs, onRead, onDetail, onAdd } = this.props;
-    const { remove_dlg_open, onRemoveDlgClose, onRemoveBlog } = this.props;
-    return (
-      <div className="blog-list-container">
-        <Paper className="paper">
-          {
-            blogs.map((blog, index)=>(
-              <BlogItem key={index} { ...blog }
-                onEdit={onEdit}
-                onRemove={onShowRemoveDlg}
-                onDetail={onDetail}
-              />
-            ))
-          }
-        </Paper>
-        <FloatingActionButton className="add-button"
-          onClick={onAdd}
-        >
-          <ContentAdd />
-        </FloatingActionButton>
+import SubHeader from '../subheader';
+import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
 
-        <RemoveDlg
-          open={ remove_dlg_open }
-          handleClose= { onRemoveDlgClose }
-          handleOK= { onRemoveBlog }
-        />
-      </div>
+class BlogList extends React.Component {
+  render(){
+    const { showEditBlogPage, showRemoveDlg, blogs, onRead, showBlogDetailPage, showAddBlogPage } = this.props;
+    const { remove_dlg_open, closeRemoveDlg, removeBlog, sortBy, changefilter } = this.props;
+    const toolbarGroups = [
+      <ToolbarGroup key={0}>
+        <FilterMenu sortBy={ sortBy } onChange={ changefilter }/>
+      </ToolbarGroup>,
+      <ToolbarGroup key={1}>
+        <RaisedButton label="Add" primary={true}  className="add-button"
+          onClick={showAddBlogPage}
+        >
+        </RaisedButton>
+      </ToolbarGroup>
+    ];
+
+    return (
+      <SubHeader
+        toolbarGroups={toolbarGroups}
+        showBackButton={ false }
+      >
+        {
+          blogs.map((blog, index)=>(
+            <BlogItem key={index} { ...blog }
+              showEditBlogPage={showEditBlogPage}
+              onRemove={showRemoveDlg}
+              showBlogDetailPage={showBlogDetailPage}
+            />
+          ))
+        }
+      </SubHeader>
     )
   }
 }
 
 BlogList.propTypes = {
-  onEdit: React.PropTypes.func ,
-  onEdit: React.PropTypes.func.isRequired,
-  onShowRemoveDlg: React.PropTypes.func,
-  onShowRemoveDlg: React.PropTypes.func.isRequired,
-  onDetail: React.PropTypes.func,
-  onDetail: React.PropTypes.func.isRequired,
-  onAdd: React.PropTypes.func,
-  onAdd: React.PropTypes.func.isRequired,
-  onRemoveDlgClose: React.PropTypes.func,
-  onRemoveDlgClose: React.PropTypes.func.isRequired,
-  onRemoveBlog: React.PropTypes.func,
-  onRemoveBlog: React.PropTypes.func.isRequired
+  showEditBlogPage: React.PropTypes.func.isRequired,
+  showRemoveDlg: React.PropTypes.func.isRequired,
+  showBlogDetailPage: React.PropTypes.func.isRequired,
+  showAddBlogPage: React.PropTypes.func.isRequired,
+  closeRemoveDlg: React.PropTypes.func.isRequired,
+  removeBlog: React.PropTypes.func.isRequired
 }
 
-const mapStateToProps = (state) => {
-  return {...state.BlogList}
-}
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-      ...bindActionCreators({
-        ...Actions
-      }, dispatch)
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(BlogList);
+export default BlogList;

@@ -1,14 +1,14 @@
-import * as Actions from './actions';
+import * as Actions from '../actions';
 
-const initState = {
+const initStateErrorText = {
   title: undefined,
   date: undefined,
   content: undefined
 }
 
-const ErrorText = (state = initState, action, stateb) => {
+const ErrorText = (state = initStateErrorText, action, stateb) => {
   switch (action.type) {
-    case Actions.CONTENT_BLOG_ERROR:
+    case Actions.VALIDATE_BLOG_ERROR:
       return {...action.payload}
     case Actions.USER_ADD_BLOG:
       return {...action.payload.errorText}

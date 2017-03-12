@@ -1,7 +1,7 @@
 import React from 'react';
 import sinon from 'sinon';
 import { shallow, mount, render } from 'enzyme';
-import { BlogList } from './index';
+import BlogList from './index';
 
 function setup(){
   const onButtonClick = sinon.spy();
@@ -10,14 +10,16 @@ function setup(){
       {title: 'Blog 1', date: new Date(), content: 'Hello world' },
       {title: 'Blog 2', date: new Date(), content: 'Hello world 2' }
     ],
-    onEdit: onButtonClick,
-    onDetail: () => {},
-    onAdd: () => {},
+    showEditBlogPage: onButtonClick,
+    showBlogDetailPage: () => {},
+    showAddBlogPage: () => {},
     handleClose: () => {},
     handleOK: () => {},
-    onRemoveDlgClose: () => {},
-    onRemoveBlog: ()=>{},
-    onShowRemoveDlg: () => {}
+    closeRemoveDlg: () => {},
+    removeBlog: ()=>{},
+    showRemoveDlg: () => {},
+    changefilter: () => {},
+    sortBy: 'Date'
   }
 
   const enzymeWrapper = shallow(<BlogList { ...props} />)
@@ -31,7 +33,7 @@ function setup(){
 describe('components', () => {
   test('BlogList', () => {
     const { enzymeWrapper } = setup();
-    expect(enzymeWrapper.find('div').hasClass('blog-list-container')).toBe(true)
+    expect(enzymeWrapper.find('SubHeader').length).toBe(1)
   })
 
   test('BlogList child items', () => {
@@ -41,12 +43,5 @@ describe('components', () => {
     expect(blogItems.at(0).props().title).toBe('Blog 1');
     expect(blogItems.at(1).props().title).toBe('Blog 2');
   })
-  //
-  // test('BlogList child items click', () => {
-  //   const { enzymeWrapper, onButtonClick } = setup();
-  //   const blogItems = enzymeWrapper.find('BlogItem');
-  //   console.log(blogItems.find('button'));
-  //   blogItems.at(0).find('button').at(0).simulate('click')
-  //   expect(onButtonClick.callCount).toBe(1);
-  // })
+
 })

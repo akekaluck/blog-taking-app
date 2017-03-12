@@ -5,35 +5,36 @@ import FlatButton from 'material-ui/RaisedButton';
 export const RemoveDlg = (props) => {
     const actions = [
        <FlatButton
-         label="Cancel"
+         label="NO"
          primary={true}
          onTouchTap={ props.handleClose }
        />,
        <FlatButton
-         label="OK"
-         primary={true}
+         label="YES"
+         secondary={true}
          keyboardFocused={true}
          onTouchTap={ props.handleOK }
        />,
      ];
     return (
       <Dialog
-        title="Dialog With Actions"
+        title="Confirm remove Blog?"
         actions={actions}
         modal={false}
         open={props.open}
         onRequestClose={props.handleClose}
       >
-        The actions in this window were passed in as an array of React objects.
+        Do you sure to remove this Blog?
+        <br />
+        { props.blog.title }
       </Dialog>
     )
-
 }
 
 RemoveDlg.propTypes = {
-  handleClose: React.PropTypes.func ,
+  open: React.PropTypes.bool.isRequired,
+  blog: React.PropTypes.object.isRequired,
   handleClose: React.PropTypes.func.isRequired,
-  handleOK: React.PropTypes.func ,
   handleOK: React.PropTypes.func.isRequired
 }
 

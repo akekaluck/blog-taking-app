@@ -1,38 +1,48 @@
 import React from 'react';
-import Paper from 'material-ui/Paper';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as Actions from './actions';
+import SubHeader from '../subheader';
+import { ToolbarGroup } from 'material-ui/Toolbar';
+import IconButton from 'material-ui/IconButton';
 import { IndexLink } from 'react-router';
+
+import EditMode from 'material-ui/svg-icons/editor/mode-edit';
+import Delete from 'material-ui/svg-icons/action/delete';
 
 class BlogScreen extends React.Component {
   render(){
-    const { Blog } = this.props;
+    const { Blog, showRemoveDlg } = this.props;
+    const toolbarGroups = [
+      <ToolbarGroup key={1}>
+        <IconButton>
+          <IndexLink to={'/edit/'+ Blog.id }>
+            <EditMode />
+          </IndexLink>
+        </IconButton>
+        <IconButton onClick={ () => showRemoveDlg(Blog) }>
+          <Delete />
+        </IconButton>
+      </ToolbarGroup>
+    ];
     return (
-      <div className="blog-list-container">
-        <Paper className="paper">
-          <div>
-            <IndexLink to={'/'}>Back</IndexLink>
-          </div>
-          <h1>{ Blog.id }</h1>
-          <h1>{ Blog.content }</h1>
-          <h1>{ Blog.date.toString() }</h1>
-        </Paper>
-      </div>
+      <SubHeader
+        toolbarGroups={toolbarGroups}
+        showBackButton = { true }
+        onRemove={ () => showRemoveDlg(Blog) }
+      >
+        <div className="blog-screen-top">
+          <div className="blog-screen-title">{ Blog.title }</div>
+          <div className="blog-screen-date">{ Blog.date?Blog.date.toString():'-' }</div>
+        </div>
+        <div className="blog-screen-content">
+          <div dangerouslySetInnerHTML={{ __html: Blog.content }} />
+        </div>
+      </SubHeader>
     )
   }
 }
 
-const mapStateToProps = (state) => {
-  return {...state.Blog}
+BlogScreen.propTypes = {
+  Blog: React.PropTypes.object.isRequired,
+  showRemoveDlg: React.PropTypes.func.isRequired,
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-      ...bindActionCreators({
-        ...Actions
-      }, dispatch)
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(BlogScreen);
+export default BlogScreen;
