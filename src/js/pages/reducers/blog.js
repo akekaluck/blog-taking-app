@@ -10,12 +10,20 @@ const initStateBlog = {
   content: undefined
 }
 
-const Blog = (state = initStateBlog, action, stateb) => {
+const loadStateFromStorage = (state, action) => {
+  if(action.payload.Blog){
+    return { ...action.payload.Blog, date: new Date(moment(action.payload.Blog.date).format())  }
+  }
+  return state;
+}
+
+
+const Blog = (state = initStateBlog, action) => {
   switch (action.type) {
     case Actions.USER_SELECT_BLOG:
       return { ...action.payload }
     case LOAD:
-      return { ...action.payload.Blog, date: new Date(moment(action.payload.Blog.date).format())  }
+      return loadStateFromStorage(state, action);
     default:
       return state;
   }
