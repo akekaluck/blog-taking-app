@@ -7,6 +7,7 @@ import TextField from 'material-ui/TextField';
 import DatePicker from 'material-ui/DatePicker';
 import RaisedButton from 'material-ui/RaisedButton';
 import Editor from '../editor';
+import CKEditorWrapper from '../ckeditorwrapper';
 
 require('./style.less');
 
@@ -32,7 +33,7 @@ class BlogEdit extends React.Component {
             errorText={ ErrorText.date }
             fullWidth={true}
           />
-          <TextField
+          {/*<TextField
             floatingLabelText="Content"
             floatingLabelFixed={true}
             defaultValue={ Blog.content }
@@ -42,6 +43,10 @@ class BlogEdit extends React.Component {
           />
           <Editor
             onChange={ (richTextState) => Blog.richText = richTextState }
+          />*/}
+          <CKEditorWrapper
+            loadValue = { Blog.content }
+            onChange = { (html) => Blog.content = html }
           />
           <div className="blog-edit-button-container">
             <RaisedButton label={label} primary={true}

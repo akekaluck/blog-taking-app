@@ -13,7 +13,9 @@ class BlogScreen extends React.Component {
           <div className="blog-screen-title">{ Blog.title }</div>
           <div className="blog-screen-date">{ Blog.date?Blog.date.toString():'-' }</div>
         </div>
-        <div className="blog-screen-content">{ Blog.content }</div>
+        <div className="blog-screen-content">
+          <div dangerouslySetInnerHTML={{ __html: Blog.content }} />
+        </div>
       </SubHeader>
     )
   }

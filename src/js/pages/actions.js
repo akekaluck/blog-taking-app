@@ -1,5 +1,6 @@
 import moment from 'moment';
 import { push, goBack } from 'react-router-redux';
+import striptags from 'striptags';
 
 export const BLOGLIST_INIT = 'BLOGLIST_INIT';
 
@@ -96,7 +97,9 @@ export const addBlog = (blog) => {
     }
 
     //Content is required
-    if(!blog.content || blog.content.length === 0){
+    if( !blog.content
+      || blog.content.length === 0
+      || striptags(blog.content).lenght === 0){
       errorText.content = 'Is Required';
     }
 

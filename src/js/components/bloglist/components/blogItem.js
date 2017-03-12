@@ -1,6 +1,7 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
+import striptags from 'striptags';
 
 const BlogItem = (props) => (
   <div className="blog-item">
@@ -21,7 +22,7 @@ const BlogItem = (props) => (
           }} />
         </div>
       </div>
-      <div className="blog-item-content">{ props.content }</div>
+      <div className="blog-item-content">{ striptags(props.content) }</div>
       <div className="blog-item-footer">
         <div className="blog-item-readmore">
           <a onClick={() => props.showBlogDetailPage(props)} >Read more</a>

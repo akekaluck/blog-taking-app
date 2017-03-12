@@ -17,7 +17,9 @@ function setup(){
     handleOK: () => {},
     closeRemoveDlg: () => {},
     removeBlog: ()=>{},
-    showRemoveDlg: () => {}
+    showRemoveDlg: () => {},
+    changefilter: () => {},
+    sortBy: 'Date'
   }
 
   const enzymeWrapper = shallow(<BlogList { ...props} />)
@@ -41,12 +43,5 @@ describe('components', () => {
     expect(blogItems.at(0).props().title).toBe('Blog 1');
     expect(blogItems.at(1).props().title).toBe('Blog 2');
   })
-  //
-  // test('BlogList child items click', () => {
-  //   const { enzymeWrapper, onButtonClick } = setup();
-  //   const blogItems = enzymeWrapper.find('BlogItem');
-  //   console.log(blogItems.find('button'));
-  //   blogItems.at(0).find('button').at(0).simulate('click')
-  //   expect(onButtonClick.callCount).toBe(1);
-  // })
+
 })
