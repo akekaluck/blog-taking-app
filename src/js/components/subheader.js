@@ -35,8 +35,7 @@ const SubHeader = (props) => (
 
 SubHeader.propTypes = {
   toolbarGroups: React.PropTypes.array.isRequired,
-  showBackButton: React.PropTypes.bool,
-  onRemove: React.PropTypes.func
+  showBackButton: React.PropTypes.bool
 }
 
 export default SubHeader;

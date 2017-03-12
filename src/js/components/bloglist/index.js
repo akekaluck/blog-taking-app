@@ -6,6 +6,8 @@ import FilterMenu from './components/filtermenu';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
+
+import SubHeader from '../subheader';
 import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
 
 class BlogList extends React.Component {
@@ -25,32 +27,20 @@ class BlogList extends React.Component {
     ];
 
     return (
-      <div className="blog-list-container">
-        <Paper className="paper">
-          <Toolbar>
-            <ToolbarGroup>
-              <FilterMenu sortBy={ sortBy } onChange={ changefilter }/>
-            </ToolbarGroup>
-            <ToolbarGroup>
-              <RaisedButton label="Add" primary={true}  className="add-button"
-                onClick={showAddBlogPage}
-              >
-              </RaisedButton>
-            </ToolbarGroup>
-          </Toolbar>
-          <div className="blog-screen-container">
-            {
-              blogs.map((blog, index)=>(
-                <BlogItem key={index} { ...blog }
-                  showEditBlogPage={showEditBlogPage}
-                  onRemove={showRemoveDlg}
-                  showBlogDetailPage={showBlogDetailPage}
-                />
-              ))
-            }
-          </div>
-        </Paper>
-      </div>
+      <SubHeader
+        toolbarGroups={toolbarGroups}
+        showBackButton={ false }
+      >
+        {
+          blogs.map((blog, index)=>(
+            <BlogItem key={index} { ...blog }
+              showEditBlogPage={showEditBlogPage}
+              onRemove={showRemoveDlg}
+              showBlogDetailPage={showBlogDetailPage}
+            />
+          ))
+        }
+      </SubHeader>
     )
   }
 }

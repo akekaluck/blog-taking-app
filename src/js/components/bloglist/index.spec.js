@@ -33,7 +33,7 @@ function setup(){
 describe('components', () => {
   test('BlogList', () => {
     const { enzymeWrapper } = setup();
-    expect(enzymeWrapper.find('div').hasClass('blog-list-container')).toBe(true)
+    expect(enzymeWrapper.find('SubHeader').length).toBe(1)
   })
 
   test('BlogList child items', () => {

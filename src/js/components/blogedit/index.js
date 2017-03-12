@@ -1,12 +1,8 @@
 import React from 'react';
-import { IndexLink } from 'react-router';
-
 import SubHeader from '../subheader';
-
 import TextField from 'material-ui/TextField';
 import DatePicker from 'material-ui/DatePicker';
 import RaisedButton from 'material-ui/RaisedButton';
-import Editor from '../editor';
 import CKEditorWrapper from '../ckeditorwrapper';
 
 require('./style.less');
