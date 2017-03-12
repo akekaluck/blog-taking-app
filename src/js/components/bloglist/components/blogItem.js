@@ -4,10 +4,10 @@ import RaisedButton from 'material-ui/RaisedButton';
 import striptags from 'striptags';
 
 const SplitContentItem = (props) => {
-  const content = striptags(props.content).replace('&nbsp;','').split(/\n/,-1).filter((line)=> line.length > 0 );
+  const content = striptags(props.content).replace('&nbsp;','').split(/\n|\r\n/,-1).filter((line)=> line.length > 0 );
   console.log(content);
   return (
-    <div>{ content.slice(0,2).join('\n') }</div>
+    <div>{ content.slice(0,1).join('\n') }</div>
   )
 }
 

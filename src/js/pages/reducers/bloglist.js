@@ -1,16 +1,15 @@
 import moment from 'moment';
 import * as Actions from '../actions';
 import { LOAD } from 'redux-storage';
+import bloglist from '../bloglist.json';
 
 const initStateBlogList = {
   sortBy: 'Date',
-  blogs: [
-    {id: 1, title: 'Hello World', date: new Date(),
-    content: '<p>Hello world</p>'
-    + '<p><img alt="" src="http://writm.com/wp-content/uploads/2016/08/Cat-hd-wallpapers.jpg" style="height:150px; width:200px" />'
-    + '</p><p>Hello&nbsp;</p>' },
-    {id: 2, title: 'Blog 2', date: new Date(), content: 'Google ประกาศหยุดพัฒนาปลั๊กอิน Adsense บน WordPress ของตัวเองในเดือนพฤษภาคมหลังพัฒนามากว่า 3 \n ปีสำหรับผู้ใช้ที่ติดตั้งและใช้งานปลั๊กอิน AdSense for WordPress ในช่วงนี้ ยังสามารถใช้งานตามปกติ แต่ผู้ใช้รายใหม่ลงทะเบียนผ่านปลั๊กอินไม่ได้แล้ว ส่วนเดือนเมษายน ผู้ใช้ทุกคนจะไม่สามารถตั้งค่าการแสดงหน่วยโฆษณาบนเว็บผ่านปลั๊กอินได้ สุดท้ายปลั๊กอินจะหยุดพัฒนาและไม่สนับสนุนการทำงานในเดือนพฤษภาคม แต่ทั้งนี้ยังคงแสดงผลโฆษณาที่เคยตั้งค่าไว้ให้เหมือนเดิม' }
-  ]
+  blogs: bloglist.map((b)=> {
+    b.date = new Date();
+    b.content = b.content.join("\r\n");
+    return b;
+  })
 }
 
 const userAddBlog = (state, action) => {

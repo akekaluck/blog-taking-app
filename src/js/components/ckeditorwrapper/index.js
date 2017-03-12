@@ -19,7 +19,7 @@ class CKEditorWrapper extends React.Component {
         {name: 'paragraph', items: ['NumberedList','BulletedList','-','Outdent','Indent']},
         {name: 'styles', items: ['Format']},
         {name: 'insert', items: ['Image']},
-        // {name: 'document', items: ['Source']}
+        {name: 'document', items: ['Source']}
       ],
       removePlugins: 'maigcline'
     };
