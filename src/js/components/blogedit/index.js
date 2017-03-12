@@ -25,8 +25,12 @@ class BlogEdit extends React.Component {
   render(){
     const { Blog, ErrorText, params, addBlog } = this.props;
     const label = params.id?'Save':'Add';
+    const toolbarGroups = [];
     return (
-      <SubHeader Blog={ Blog } showRightButtons={ false } >
+      <SubHeader
+        toolbarGroups={toolbarGroups}
+        showBackButton={ true }
+      >
           <TextField
             floatingLabelText="Title"
             floatingLabelFixed={true}

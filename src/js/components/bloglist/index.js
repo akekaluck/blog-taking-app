@@ -12,6 +12,18 @@ class BlogList extends React.Component {
   render(){
     const { showEditBlogPage, showRemoveDlg, blogs, onRead, showBlogDetailPage, showAddBlogPage } = this.props;
     const { remove_dlg_open, closeRemoveDlg, removeBlog, sortBy, changefilter } = this.props;
+    const toolbarGroups = [
+      <ToolbarGroup key={0}>
+        <FilterMenu sortBy={ sortBy } onChange={ changefilter }/>
+      </ToolbarGroup>,
+      <ToolbarGroup key={1}>
+        <RaisedButton label="Add" primary={true}  className="add-button"
+          onClick={showAddBlogPage}
+        >
+        </RaisedButton>
+      </ToolbarGroup>
+    ];
+
     return (
       <div className="blog-list-container">
         <Paper className="paper">

@@ -30,7 +30,6 @@ class CKEditorWrapper extends React.Component {
       const ckeditor = event.editor;
       this.state.ckeditor = ckeditor;
       this.state.ckeditor.changeListener =  this.state.ckeditor.on('change', () => this.ckeditorOnChange());
-      console.log('loadValue: ', this.props.loadValue, ckeditor);
       if(this.props.loadValue){
         this.state.ckeditor.setData(this.props.loadValue)
       }
