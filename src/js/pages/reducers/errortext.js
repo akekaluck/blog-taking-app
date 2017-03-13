@@ -12,6 +12,8 @@ const ErrorText = (state = initStateErrorText, action, stateb) => {
       return {...action.payload}
     case Actions.USER_ADD_BLOG:
       return {...action.payload.errorText}
+    case Actions.USER_SELECT_BLOG:
+      return {...initStateErrorText}
     default:
       return state;
   }
